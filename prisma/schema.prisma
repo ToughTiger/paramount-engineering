@@ -1,0 +1,97 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // or "mysql" | "sqlite" | "sqlserver" depending on your DB
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Category {
+  id           Int           @id @default(autoincrement())
+  name         String        @unique
+  blogPosts    BlogPost[]
+  portfolio    PortfolioItem[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Tag {
+  id        Int              @id @default(autoincrement())
+  name      String           @unique
+  posts     BlogPostTag[]
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+}
+
+model BlogPost {
+  id           Int            @id @default(autoincrement())
+  slug         String         @unique
+  title        String
+  author       String
+  date         DateTime       // From ISO string
+  imageUrl     String
+  content      String
+  categoryId   Int
+  category     Category       @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  tags         BlogPostTag[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([categoryId])
+}
+
+model BlogPostTag {
+  postId Int
+  tagId  Int
+  post   BlogPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+  @@index([tagId])
+}
+
+model PortfolioItem {
+  id           Int       @id @default(autoincrement())
+  title        String
+  imageUrl     String
+  description  String
+  categoryId   Int
+  category     Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([categoryId])
+}
+
+model HeroSlide {
+  id        Int      @id @default(autoincrement())
+  imageUrl  String
+  title     String
+  subtitle  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/**
+ * Singleton AboutContent
+ * We enforce a single row with a `singleton` column that always has value 1.
+ */
+model AboutContent {
+  id        Int      @id @default(autoincrement())
+  singleton Int      @default(1) @unique
+  imageUrl  String
+  mission   String
+  bio       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

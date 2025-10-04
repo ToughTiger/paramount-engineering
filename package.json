@@ -4,6 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build:server": "tsc -p tsconfig.json && vite build && vite build --ssr server/index.ts",
+    "start": "node dist/server/index.js",
+    "postinstall": "prisma generate",
+    "migrate": "prisma migrate dev",
+    "studio": "prisma studio",
+    "generate": "prisma generate",
     "dev:server": "tsx watch server/index.ts",
     "dev:client": "vite",
     "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\""

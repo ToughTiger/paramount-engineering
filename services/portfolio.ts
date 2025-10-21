@@ -1,4 +1,5 @@
 // src/repositories/portfolio.ts
+import 'server-only';
 import { prisma } from '@/lib/prisma';
 
 type CreatePortfolioInput = {

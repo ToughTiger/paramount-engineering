@@ -1,5 +1,7 @@
 // src/repositories/categories.ts
+import 'server-only';
 import { prisma } from '@/lib/prisma';
+
 
 export async function createCategory(name: string) {
   return prisma.category.create({ data: { name } });

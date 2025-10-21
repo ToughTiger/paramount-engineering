@@ -8,7 +8,7 @@ import ManageHeroSlider from './ManageHeroSlider';
 import ManageAbout from './ManageAbout';
 import ManageSettings from './ManageSettings';
 import { BlogPost } from '../types';
-import { generateBlogPostContent } from '../services/geminiService';
+// import { generateBlogPostContent } from '../services/geminiService';
 import { ImageUpload } from './ImageUpload';
 
 type AdminView = 'blog' | 'portfolio' | 'categories' | 'hero' | 'about' | 'settings';
@@ -89,13 +89,13 @@ const ManageBlog = () => {
         closeModal();
     };
 
-    const handleGenerateContent = async () => {
-        if (!aiTopic) return;
-        setIsGenerating(true);
-        const content = await generateBlogPostContent(aiTopic);
-        setFormData(prev => ({...prev, title: aiTopic, content: content}));
-        setIsGenerating(false);
-    };
+    // const handleGenerateContent = async () => {
+    //     if (!aiTopic) return;
+    //     setIsGenerating(true);
+    //     const content = await generateBlogPostContent(aiTopic);
+    //     setFormData(prev => ({...prev, title: aiTopic, content: content}));
+    //     setIsGenerating(false);
+    // };
 
     const getCategoryName = (id: number) => categories.find(c => c.id === id)?.name || 'Uncategorized';
     
@@ -142,15 +142,15 @@ const ManageBlog = () => {
                                             placeholder="Enter a blog post topic..." 
                                             className="flex-grow p-2 border border-slate-600 bg-slate-800 text-white rounded-md placeholder-slate-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
                                         />
-                                        <button 
+                                        {/* <button 
                                             type="button" 
                                             onClick={handleGenerateContent}
                                             disabled={isGenerating || !aiTopic}
                                             className="bg-lime-500 text-white p-2 rounded-md hover:bg-lime-600 disabled:bg-lime-300 flex items-center gap-2"
                                         >
                                             <AiSparkleIcon />
-                                            {isGenerating ? 'Generating...' : 'Generate'}
-                                        </button>
+                                            {isGenerating ? 'Generating...' : 'Generate'} */}
+                                        {/* </button> */}
                                     </div>
                                 </div>
                                 

@@ -1,4 +1,5 @@
 // src/repositories/users.ts
+import 'server-only';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 

@@ -1,4 +1,6 @@
 // src/repositories/heroSlides.ts
+import 'server-only';
+
 import { prisma } from '@/lib/prisma';
 
 type HeroSlideInput = { imageUrl: string; title: string; subtitle: string };

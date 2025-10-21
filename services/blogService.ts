@@ -1,4 +1,5 @@
 // src/repositories/blogPosts.ts
+import 'server-only';
 import { prisma } from '@/lib/prisma';
 
 type CreateBlogPostInput = {

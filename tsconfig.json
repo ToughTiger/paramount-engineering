@@ -1,29 +1,75 @@
+// {
+//   "compilerOptions": {
+//     "target": "ES2022",
+//     "experimentalDecorators": true,
+//     "useDefineForClassFields": false,
+//     "module": "ESNext",
+//     "lib": [
+//       "ES2022",
+//       "DOM",
+//       "DOM.Iterable"
+//     ],
+//     "skipLibCheck": true,
+//     "types": [
+//       "node"
+//     ],
+//     "moduleResolution": "bundler",
+//     "isolatedModules": true,
+//     "moduleDetection": "force",
+//     "allowJs": true,
+//     "jsx": "react-jsx",
+//     "paths": {
+//       "@/*": [
+//         "./*"
+//       ]
+//     },
+//     "allowImportingTsExtensions": true,
+//     "noEmit": true
+//   }
+// }
 {
   "compilerOptions": {
     "target": "ES2022",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "module": "ESNext",
     "lib": [
       "ES2022",
       "DOM",
       "DOM.Iterable"
     ],
-    "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "allowJs": true,
-    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "allowJs": false,
+    "strict": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*"
+        "*"
       ]
     },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx"
+, "services/initialData.ts", "postcss.config.mjs", "tailwind.config.ts.bk"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

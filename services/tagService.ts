@@ -1,4 +1,6 @@
 // src/repositories/tags.ts
+import 'server-only';
+
 import { prisma } from '@/lib/prisma';
 
 export async function createTag(name: string) {
